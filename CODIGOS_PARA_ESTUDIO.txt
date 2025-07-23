@@ -1,0 +1,168 @@
+#A INSTALAR
+pip install openpyxl matplotlib seaborn
+
+# INVESTIGA QUÉ ES UN DataFrame
+dd = pandas.DataFrame(rrr)
+
+
+#ARCHIVO 1
+
+import pandas as pd
+from tkinter import Tk
+from tkinter.filedialog import askopenfilename
+
+Tk().withdraw()
+archivo_excel = askopenfilename(
+    title="GGGGGGGGGG",
+    filetypes=[("AAAAAAAA", "*.xlsx *.xls"), 
+               ("Todos los archivos", "*.*")])
+
+if archivo_excel:
+    df = pd.read_excel(archivo_excel)
+    print("Archivo cargado correctamente:")
+    print(df.head())
+else:
+    print("No se seleccionó ningún archivo")
+
+
+#abre un excel en el paquete, CORRE Y ANALIZA EL CÓDIGO.
+
+import tkinter as tkr
+from tkinter import messagebox
+import openpyxl as opp
+import pandas as pd
+
+baseexcel=pd.ExcelFile("BASE_MATERIALES_APPSHEETS.xlsx")
+def btn_hojas():
+    mesam = opp.load_workbook("BASE_MATERIALES_APPSHEETS.xlsx")
+    qq=mesam.sheetnames
+    messagebox.showinfo("HOJAS",message=f"El libro tiene las hojas \n {qq}")
+    
+base=tkr.Tk()
+base.title("DESDE EXCEL")
+
+ff=tkr.Button(base,text="Hojas del Libro",command=btn_hojas)
+ff.pack()
+
+#baseexcel=opp.load_workbook("BASE_MATERIALES_APPSHEETS.xlsx")
+
+#hojas=baseexcel.sheetnames
+
+#usar_label = tkr.Label(base, text=f"hojas del libro de excel a trabajar \n {hojas}",font=("Arial",20))
+#usar_label.pack(pady=30)
+
+base.mainloop()
+
+#DATOS = pd.read_excel(r"https://docs.google.com/spreadsheets/d/1-9xC-kPfziG4o2ZU-eS3YAnMYKZd31lm/edit?usp=sharing&ouid=110144339162798547112&rtpof=true&sd=true","Inspecciones")
+#print(DATOS.head(5))
+
+df = pd.read_excel('BASE_MATERIALES_APPSHEETS.xlsx',sheet_name="Inspecciones")
+# Seleccionar la columna 'A' y convertirla en una lista
+columna_a = df["A"].tolist()
+
+# Mostrar la lista
+print(columna_a)
+
+
+#TRABAJO CON ARCHIVOS
+
+nom_file= "restero_uno.txt"
+#modos:,
+    #r es read(leer),
+    #a es append(anexar)
+    #w es write(escribir)
+    #x es create(crear)
+
+nom= open(nom_file,"x")
+
+# Crear un archivo vacio
+tttttt = 'DDDDD_SSS.txt'
+archivo = open(tttttt, 'x')
+print(f'Se creo el archivo: {tttttt}')
+
+#Escribir informacion a un archivo
+dd = open('ff_gg.txt', 'w')  # write - escribir
+dd.write('??????????')
+dd.close()  # Cerramos el buffer
+
+#Leer informacion de un Archivo
+hhh = open('ff_gg.txt', 'r')  # read - leer
+print(hhh.readlines())
+hhh.close()
+
+#Anexar informacion a un archivo
+rrr = open('ff_gg.txt', 'a')  # append - anexar
+rrr.write('Anexando informacion...\n')
+rrr.write('Saliendo de anexar informacion...\n')
+rrr.close()
+
+
+#Leer lineas de un archivo
+nombre_archivo = 'mi_archivo.txt'
+archivo = open(nombre_archivo)  # por default se abre en modo lectura - r
+
+# Leer las lineas del archivo
+for linea in archivo:
+    print(linea)
+archivo.close()
+
+# Volvemos a abrir el archivo
+archivo = open(nombre_archivo)
+lineas = archivo.readlines()
+for linea in lineas:
+    print(linea)
+archivo.close()
+
+# Abrir el archivo como recurso (with)
+with open(nombre_archivo) as archivo:
+    print(archivo.read())
+
+
+# Escribir una lista de datos a un archivo
+#import os
+
+nombre_archivo = 'mi_archivo.txt'
+lista = ['Global\n', 'Mentoring\n']
+with open(nombre_archivo, 'a+') as archivo:
+    archivo.writelines(lista)
+print('Se anexo la lista de datos')
+
+# Eliminar un archivo
+if os.path.exists(nombre_archivo):
+    os.remove(nombre_archivo)
+    print(f'Se elimino el archivo : {nombre_archivo}')
+else:
+    print(f'Archivo no encontrado: {nombre_archivo}')
+
+
+#Manejo de Excepciones
+try:
+    # print(mi_variable)
+    # 10/0
+    x = int(input('Dame el valor de x: '))
+    if x == 0:
+        raise Exception('La variable x es 0')
+except Exception as e:
+    print(f'Ocurrio un error: {e}')
+else:
+    print('El valor de la variable x es distinto de 0')
+finally:
+    print(f'Valor de x validado {x}')
+
+
+#Excepciones y Archivos
+nombre_archivo = 'mi_archivo.txt'
+archivo = None
+try:
+    archivo = open(nombre_archivo)
+except Exception as e:
+    print(f'Error al abrir archivo: {e}')
+else:
+    print(f'Se abrio correctamente el archivo: {nombre_archivo}')
+finally:
+    print('Termina programa...')
+    if archivo is not None:
+        archivo.close()
+        print('Se cerro el archivo correctamente')
+    else:
+        print('La variable de archivo no se inicializo...')
